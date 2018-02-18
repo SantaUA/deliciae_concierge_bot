@@ -24,7 +24,7 @@ bot.on('message', msg => {
 	if (selectedRooms.length > 0) {
 		for (let i = 0; i < selectedRooms.length; i++) {
 			if (selectedRooms[i].userId === msg.chat.id && selectedRooms[i].name.length > 1) {
-				bot.sendMessage(msg.chat.id, `Добрий день, ${selectedRooms[i].name}".Чим можу вам допомогти ?"`)
+				bot.sendMessage(msg.chat.id, `Добрий день, ${selectedRooms[i].name}.Чим можу вам допомогти ?"`)
 				selectedRooms[i].type = msg.text;
 				return;
 			}
@@ -33,7 +33,7 @@ bot.on('message', msg => {
 
 	switch (msg.text) {
 		case 'Добрий день':
-			bot.sendMessage(msg.chat.id, `Добрий день, ${msg.from.first_name}". Мене звати Притчард, чи я можу вам допомогти ?"`)
+			bot.sendMessage(msg.chat.id, `Добрий день, ${msg.from.first_name}. Мене звати Притчард, чи я можу вам допомогти ?`)
 			break;
 
 		case 'Я бажаю замовити в вашому готелі номер з 19.02 до 28.02':
