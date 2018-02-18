@@ -21,8 +21,13 @@ var bot = new TelegramBot(token, {
 var selectedRooms = [];
 
 bot.on('message', msg => {
-	if (msg.text === 'Добрий день') {
-		bot.sendMessage(msg.chat.id, `Добрий день, ${msg.from.first_name}". Мене звати Притчард, чи я можу вам допомогти ?"`)
+	if (selectedRooms.length > 0) {
+		for (let i = 0; i < selectedRooms.length; i++) {
+			if (selectedRooms[i].userId === msg.chat.id) {
+				bot.sendMessage(msg.chat.id, `Добрий день, ${selectedRooms[i].name}".Чим можу вам допомогти ?"`)
+				selectedRooms[i].type = msg.text;
+			}
+		}
 	}
 
 	switch (msg.text) {
@@ -51,7 +56,7 @@ bot.on('message', msg => {
 					}
 				}
 			}
-			bot.sendMessage(msg.chat.id, `Скажіть призвище та ім'я на яке буде оформлений номер`)
+			bot.sendMessage(msg.chat.id, `Скажіть прізвище та ім'я, на яке буде оформлений номер`)
 			break;
 
 		case 'Василець Себастьен':
@@ -61,7 +66,7 @@ bot.on('message', msg => {
 					if (selectedRooms[i].userId === msg.chat.id) {
 						currentRoom = selectedRooms[i];
 						selectedRooms[i].name = msg.text;
-						selectedRooms[i].roomNumber = Math.random() * (81 - 1) + 1;
+						selectedRooms[i].roomNumber = Math.floor(Math.random() * (81 - 1)) + 1;
 					}
 				}
 			}
@@ -75,7 +80,7 @@ bot.on('message', msg => {
 					if (selectedRooms[i].userId == msg.chat.id && selectedRooms[i].userId) {
 						status = true;
 						currentRoom = selectedRooms[i];
-						bot.sendMessage(msg.chat.id, `Добрий день, ${msg.from.first_name}". Ваш номер №${currentRoom.roomNumber} ${currentRoom.type}`)
+						bot.sendMessage(msg.chat.id, `Добрий день, ${currentRoom.name}. Ваш номер №${currentRoom.roomNumber} ${currentRoom.type}`)
 					} else {
 						status = false;
 					}
@@ -88,6 +93,7 @@ bot.on('message', msg => {
 			}
 			break;
 		default:
+			bot.sendMessage(msg.chat.id, `Нажаль я не розуміюб що ви маєте на увазі. Спробуйте ще раз, або зверніться на стійку адміністрації за тел. 044-456-12-23`);
 			break;
 	}
 });
