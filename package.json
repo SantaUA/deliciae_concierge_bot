@@ -4,6 +4,7 @@
   "description": "chat bot telegram",
   "main": "index.js",
   "dependencies": {
+    "express": "^4.16.2",
     "node-telegram-bot-api": "^0.30.0",
     "request": "^2.83.0"
   },
