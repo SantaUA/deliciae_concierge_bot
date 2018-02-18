@@ -23,9 +23,10 @@ var selectedRooms = [];
 bot.on('message', msg => {
 	if (selectedRooms.length > 0) {
 		for (let i = 0; i < selectedRooms.length; i++) {
-			if (selectedRooms[i].userId === msg.chat.id) {
+			if (selectedRooms[i].userId === msg.chat.id && selectedRooms[i].name.length > 1) {
 				bot.sendMessage(msg.chat.id, `Добрий день, ${selectedRooms[i].name}".Чим можу вам допомогти ?"`)
 				selectedRooms[i].type = msg.text;
+				return;
 			}
 		}
 	}
