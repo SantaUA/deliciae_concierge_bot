@@ -33,7 +33,8 @@ bot.on('message', msg => {
 
 	switch (msg.text) {
 		case 'Добрий день':
-			bot.sendMessage(msg.chat.id, `Добрий день, ${msg.from.first_name}. Мене звати Притчард, чи я можу вам допомогти ?`)
+			bot.sendMessage(msg.chat.id, `Добрий день, Себаст\'єн. Мене звати Притчард, чи я можу вам допомогти ?`)
+			// bot.sendMessage(msg.chat.id, `Добрий день, ${msg.from.first_name}. Мене звати Притчард, чи я можу вам допомогти ?`)
 			break;
 
 		case 'Я бажаю замовити в вашому готелі номер з 19.02 до 28.02':
@@ -60,7 +61,7 @@ bot.on('message', msg => {
 			bot.sendMessage(msg.chat.id, `Скажіть прізвище та ім'я, на яке буде оформлений номер`)
 			break;
 
-		case 'Василець Себастьен':
+		case 'Василець Себаст\'єн':
 			var currentRoom;
 			if (selectedRooms.length > 0) {
 				for (let i = 0; i < selectedRooms.length; i++) {
@@ -71,7 +72,8 @@ bot.on('message', msg => {
 					}
 				}
 			}
-			bot.sendMessage(msg.chat.id, `${msg.from.first_name}, за вами заброньований номер ${currentRoom.type} №${currentRoom.roomNumber}, на період ${currentRoom.date}`)
+			bot.sendMessage(msg.chat.id, `Себаст'єн, за вами заброньований номер ${currentRoom.type} №${currentRoom.roomNumber}, на період ${currentRoom.date}`)
+			// bot.sendMessage(msg.chat.id, `${msg.from.first_name}, за вами заброньований номер ${currentRoom.type} №${currentRoom.roomNumber}, на період ${currentRoom.date}`)
 			break;
 		case 'Мій номер':
 			var status = false;
