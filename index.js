@@ -61,13 +61,13 @@ bot.on('message', msg => {
 			bot.sendMessage(msg.chat.id, `Скажіть прізвище та ім'я, на яке буде оформлений номер`)
 			break;
 
-		case 'Василець Себаст’єн':
+		case msg.text.substring(1, 4) === 'Васи':
 			var currentRoom;
 			if (selectedRooms.length > 0) {
 				for (let i = 0; i < selectedRooms.length; i++) {
 					if (selectedRooms[i].userId === msg.chat.id) {
 						currentRoom = selectedRooms[i];
-						selectedRooms[i].name = msg.text;
+						selectedRooms[i].name = 'Василець Себаст\'єн';
 						selectedRooms[i].roomNumber = Math.floor(Math.random() * (81 - 1)) + 1;
 					}
 				}
