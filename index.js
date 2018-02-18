@@ -61,7 +61,7 @@ bot.on('message', msg => {
 			bot.sendMessage(msg.chat.id, `Скажіть прізвище та ім'я, на яке буде оформлений номер`)
 			break;
 
-		case 'Василець Себаст\'єн':
+		case 'Василець Себаст’єн':
 			var currentRoom;
 			if (selectedRooms.length > 0) {
 				for (let i = 0; i < selectedRooms.length; i++) {
